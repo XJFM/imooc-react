@@ -1,36 +1,34 @@
 import React from 'react'
-
 import styles from './index.module.scss'
 
-// 这里，我们使用受控组件来处理表单数据
-// 在一个受控组件中，表单数据是由 React 组件来管理的
-// Function components cannot have refs 所以需要用 class方式创建组件
+// 这里，我们使用非受控组件来处理表单数据。
 
 class Login extends React.Component {
   constructor(props) {
     super(props)
-    this.handleLoginClick = this.handleLoginClick.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
   
-  handleLoginClick(e) {
-    console.log(this)
+  handleSubmit(e) {
+    alert(`昵称：${this.refs.username.value} 密码：${this.refs.password.value}`)
+    e.preventDefault()
   }
 
   render() {
     return (
       <div className={styles['container-login']}>
-        <form onSubmit={this.handleLoginClick}>
+        <form onSubmit={this.handleSubmit}>
           <div className={styles.row}>
             <span className={styles.icon}>
               <i className={`${styles.fa} ${'fa fa-user'}`}></i>
             </span>
-            <input type="text" ref="name"/>
+            <input type="text" ref="username"/>
           </div>
           <div className={styles.row}>
             <span className={styles.icon}>
               <i className={`${styles.fa} ${'fa fa-lock'}`}></i>
-              <input type="password"/>
             </span>
+            <input type="password" ref="password"/>
           </div>
           <div className={styles.row}>
             <input type="submit" className={`${styles.btn} ${styles['btn-login']}`} value="登录"/>

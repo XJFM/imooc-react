@@ -19,7 +19,7 @@ function Login(props) {
           </span>
         </div>
         <div className={styles.row}>
-          <input type="submit" className={`${styles.btn} ${styles['btn-login']}`} vlaue="登录"/>
+          <input type="submit" className={`${styles.btn} ${styles['btn-login']}`} value="登录"/>
         </div>
       </form>
       <div className={styles['user-redirect']} onClick={props.handleClick}>注册</div>
