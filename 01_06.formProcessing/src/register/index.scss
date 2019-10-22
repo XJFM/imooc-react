@@ -10,4 +10,17 @@
         top: 9px;
       }
     }
+    .other {
+      height: 37px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      input {
+        width: auto;
+      }
+      select {
+        width: 100px;
+        height: 30px;
+      }
+    }
 }
