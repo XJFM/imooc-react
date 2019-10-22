@@ -33,7 +33,7 @@ class Register extends React.Component {
             <span className="input-tip">
               手机号：
             </span>
-            <input type="text" value={this.state.phone} name="phone" onChange={(event) => this.handleChange}/>
+            <input type="text" value={this.state.phone} name="phone" onChange={this.handleChange}/>
           </div>
           <div className="row">
             <span className="input-tip">
