@@ -14,9 +14,9 @@ class Register extends React.Component {
     }
   }
 
-  handleChange(field, e) {
+  handleChange = (e) => {
     this.setState({
-      [field]: e.target.value
+      [e.target.name]: e.target.value
     })
   }
 
@@ -33,19 +33,19 @@ class Register extends React.Component {
             <span className="input-tip">
               手机号：
             </span>
-            <input type="text" value={this.state.phone} onChange={(event) => this.handleChange('phone', event)}/>
+            <input type="text" value={this.state.phone} name="phone" onChange={(event) => this.handleChange}/>
           </div>
           <div className="row">
             <span className="input-tip">
               昵&nbsp;&nbsp;&nbsp;&nbsp;称：
             </span>
-              <input type="text" value={this.state.username} onChange={(event) => this.handleChange('username', event)}/>
+              <input type="text" value={this.state.username} name="username" onChange={this.handleChange}/>
           </div>
           <div className="row">
             <span className="input-tip">
               密&nbsp;&nbsp;&nbsp;&nbsp;码：
             </span>
-              <input type="password" value={this.state.password} onChange={(event) => this.handleChange('password', event)}/>
+              <input type="password" value={this.state.password} name="password" onChange={this.handleChange}/>
           </div>
           <div className="row tc">
             <input type="submit" className="btn btn-login" value="注册"/>
