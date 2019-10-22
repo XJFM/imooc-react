@@ -1,4 +1,5 @@
 import React from 'react'
+import { verify, submitVerify, Rules } from './config'
 import './index.scss'
 
 // 这里，我们使用受控组件来处理表单数据。
@@ -42,8 +43,27 @@ class Register extends React.Component {
   }
 
   handleSubmit(e) {
-    alert(`手机号：${this.state.phone} 昵称：${this.state.username} 密码：${this.state.password}`)
     e.preventDefault()
+    /* 提交校验 */
+    const verifyResult = submitVerify(this.state)
+    if (verifyResult.error) {
+      alert(verifyResult.message)
+      return
+    }
+
+    alert(`手机号：${this.state.phone} 昵称：${this.state.username} 密码：${this.state.password}`)
+  }
+
+  validator = {
+    onBlur (e) {
+      const rules = Rules[e.target.name]
+      const value = e.target.value
+      /* 失去焦点校验 */
+      const verifyResult = verify(value, rules)
+      if (verifyResult.error) {
+        alert(verifyResult.message)
+      }
+    }
   }
 
   render() {
@@ -52,21 +72,21 @@ class Register extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <div className="row">
             <span className="input-tip">
-              手机号：
+              <i>*</i>手机号：
             </span>
-            <input type="text" value={this.state.phone} name="phone" onChange={this.handleChange}/>
+            <input {...this.validator} type="text" value={this.state.phone} name="phone" onChange={this.handleChange}/>
           </div>
           <div className="row">
             <span className="input-tip">
-              昵&nbsp;&nbsp;&nbsp;&nbsp;称：
+              <i>*</i>昵&nbsp;&nbsp;&nbsp;&nbsp;称：
             </span>
-            <input type="text" value={this.state.username} name="username" onChange={this.handleChange}/>
+            <input {...this.validator} type="text" value={this.state.username} name="username" onChange={this.handleChange}/>
           </div>
           <div className="row">
             <span className="input-tip">
-              密&nbsp;&nbsp;&nbsp;&nbsp;码：
+              <i>*</i>密&nbsp;&nbsp;&nbsp;&nbsp;码：
             </span>
-            <input type="password" value={this.state.password} name="password" onChange={this.handleChange}/>
+            <input {...this.validator} type="password" value={this.state.password} name="password" onChange={this.handleChange}/>
           </div>
           <div className="row other">
             <span className="input-tip">
@@ -94,7 +114,7 @@ class Register extends React.Component {
             </select>
           </div>
           <div className="row tc">
-            <input type="submit" className="btn btn-login" value="注册"/>
+            <button type="submit" className="btn btn-login">注册</button>
           </div>
         </form>
         <div className="user-redirect" onClick={this.props.handleClick}>已有账号？直接登录</div>

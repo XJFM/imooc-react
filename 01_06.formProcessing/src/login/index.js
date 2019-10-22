@@ -31,7 +31,7 @@ class Login extends React.Component {
             <input type="password" ref="password"/>
           </div>
           <div className={styles.row}>
-            <input type="submit" className={`${styles.btn} ${styles['btn-login']}`} value="登录"/>
+            <button type="submit" className={`${styles.btn} ${styles['btn-login']}`} disabled={this.state.isDisabled}>登录</button>
           </div>
         </form>
         <div className={styles['user-redirect']} onClick={this.props.handleClick}>注册</div>

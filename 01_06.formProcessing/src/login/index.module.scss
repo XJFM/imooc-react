@@ -1,6 +1,7 @@
 .container-login {
     .user-redirect {
       text-align: center;
+      cursor: pointer;
       a {
         text-decoration: none;
         color: #333;
@@ -33,7 +34,7 @@
       .hide {
         display: none;
       }
-      input.btn-login {
+      .btn-login {
         padding:0;
         width: 280px;
         line-height: 44px;
@@ -42,6 +43,12 @@
         color: #fff;
         font-size: 14px;
         border:0;
+        cursor: pointer;
+        outline: none;
+        &::disabled {
+          opacity: .5;
+          cursor: no-drop;
+        }
       }
     }
     
