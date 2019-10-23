@@ -107,7 +107,7 @@ class Register extends React.Component {
             <span className="input-tip">
               城&nbsp;&nbsp;&nbsp;&nbsp;市：
             </span>
-            <select value={this.state.city} onChange={this.handleSelectChange} placeholder="请选择城市">
+            <select value={this.state.city} onChange={this.handleSelectChange}>
               <option value="beijing">北京</option>
               <option value="shanghai">上海</option>
               <option value="guangzhou">广州</option>
@@ -123,4 +123,4 @@ class Register extends React.Component {
   }
 }
 
-export default Register;
+export default Register
