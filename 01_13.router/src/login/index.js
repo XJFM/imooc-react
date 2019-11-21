@@ -1,21 +1,32 @@
 import React from 'react'
 import styles from './index.module.scss'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 // 这里，我们使用非受控组件来处理表单数据。
 
 class Login extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      redirect: false
+    }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   
   handleSubmit(e) {
     alert(`昵称：${this.refs.username.value} 密码：${this.refs.password.value}`)
+    this.setState({
+      redirect: true
+    })
     e.preventDefault()
   }
 
   render() {
+    if (this.state.redirect) {
+      return (
+        <Redirect to="/main" />
+      )
+    }
     return (
       <div className={styles['container-login']}>
         <form onSubmit={this.handleSubmit}>
