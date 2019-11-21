@@ -1,0 +1,27 @@
+.container {
+}
+.container-right {
+  position: relative;
+  height: 400px;
+  margin-left: 300px;
+  border: 2px solid #f44;
+}
+.container-button {
+  border: none;
+  outline: none;
+  background-color: #2f3f4f;
+  color: #fff;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  border: 2px solid #2f3f4f;
+}
