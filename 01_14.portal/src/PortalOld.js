@@ -1,34 +1,45 @@
 import React from 'react'
 import './App.css'
-import { createPortal } from 'react-dom'
-
-/* 定义传送门显示端的 DOM 元素 */
-const createDiv = () => {
-    const divElement = document.createElement('div')
-    document.body.appendChild(divElement)
-    return divElement
-}
+import { unstable_renderSubtreeIntoContainer, unmountComponentAtNode } from 'react-dom'
 
 class Dialog extends React.Component {
   constructor(props) {
     super(props)
     this.state = { visible: false }
-    
-    /* 定义传送门显示端的 DOM 元素 */
-    this.node = createDiv()
+
+    const doc = window.document
+    this.node = doc.createElement('div')
+    doc.body.appendChild(this.node)
   }
-  componentWillUnmount() {
-    document.body.removeChild(this.node)
+
+  componentDidMount() {
+    const doc = window.document
+    this.node = doc.createElement('div')
+    doc.body.appendChild(this.node)
+
+    this.renderPortal()
   }
-  render () {
-    return createPortal(
+
+  renderPortal() {
+    unstable_renderSubtreeIntoContainer(
+      this, //代表当前组件
       <>
         <div className="dialog">
           这是一个 dialog
         </div>
-      </>,  // 放入传送门的 JSX
+      </>, // 放入传送门的 JSX
       this.node // 传送至另一端的 DOM node
     )
+  }
+
+  componentWillUnmount() {
+    unmountComponentAtNode(this.node);
+    window.document.body.removeChild(this.node);
+  }
+
+  render() {
+    // render null 表示什么都不渲染
+    return null
   }
 }
 
