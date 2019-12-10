@@ -3,7 +3,7 @@ import React from 'react'
 import Login from './login'
 import Register from './register'
 import './App.scss'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 
 class App extends React.Component {
   render() {
