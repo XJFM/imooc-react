@@ -61,24 +61,6 @@ createServer((req, res) => {
     res.end()
   } else {
     const frontHtml = index.toString().replace('<div id="root"></div>', `<div id="root">${frontComponents}</div>`)
-    // const frontHtml = `<!DOCTYPE html>
-    //     <html lang="en">
-    //         <head>
-    //             <meta charset="utf-8">
-    //             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    //             <meta name="theme-color" content="#000000">
-    //             <title>StartRoute</title>
-    //             <link rel="stylesheet" type="text/css" href="${buildPath.files["main.css"]}">
-    //         </head>
-    //         <body>
-    //             <noscript>
-    //             You need to enable JavaScript to run this app.
-    //             </noscript>
-    //             <div id="root">${frontComponents}</div>
-    //             <script src="${buildPath.files['main.js']}"></script>
-    //         </body>
-    //     </html>`
-
     res.write(frontHtml)
     res.end()
   }
